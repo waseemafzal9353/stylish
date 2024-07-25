@@ -8,6 +8,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import OnBoarding from "./OnBoarding";
 import Login from "./auth/Login";
 import Signup from "./auth/Signup";
+import ForgotPassword from "./auth/ForgotPassword";
 
 const Stack = createStackNavigator();
 SplashScreen.preventAutoHideAsync();
@@ -19,6 +20,7 @@ export default function RootLayout() {
     "Montserrat-EB": require("../assets/fonts/Montserrat.ttf"),
     "Montserrat-SB": require("../assets/fonts/Montserrat-SB.ttf"),
     "Montserrat-R": require("../assets/fonts/Montserrat-Regular.ttf"),
+    "Montserrat-M": require("../assets/fonts/Montserrat-Medium.ttf"),
   });
 
   useEffect(() => {
@@ -50,7 +52,7 @@ export default function RootLayout() {
     //     <Stack.Navigator>
 
     //     <Stack.Screen name="onBoarding"/>
-    //   <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+    //   
     //     </Stack.Navigator>
 
     // </Stack>
@@ -61,6 +63,8 @@ export default function RootLayout() {
       <Stack.Screen name="OnBoarding" component={OnBoarding}  />
       <Stack.Screen name="auth/Login" component={Login} />
       <Stack.Screen name="auth/Signup" component={Signup} />
+      <Stack.Screen name="auth/ForgotPassword" component={ForgotPassword} />
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }
