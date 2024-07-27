@@ -12,12 +12,35 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Fontisto from "@expo/vector-icons/Fontisto";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import ContinueWith from "@/components/Auth/ContinueWith";
-
+import { useDispatch } from "react-redux";
+import {login} from '../../redux/authSlice'
+import Toast from "react-native-toast-message";
 const Login = (props) => {
   const { width, height } = useWindowDimensions();
   const [secureTextEntry, setSecureTextEntry] = useState(true);
+  const [form, setForm] = useState({
+    email: '',
+    password: ''
+  });
   const dynamicFontSize = width * 0.07;
+  const dispatch = useDispatch();
 
+  const handleChange = (name, value) => {
+    setForm({ ...form, [name]: value });
+  };
+  const handleLogin = () => {
+    if(form.email === '' || form.password === '') {
+      Toast.show({
+        type: 'error',
+        text1: 'Validation Error',
+        text2: 'Email and password cannot be empty.'
+      })
+      return
+    }
+    dispatch(login({email: form.email, password: form.password}))
+    props.navigation.navigate('GetStarted')
+  }
+  
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={[styles.welcomeContainer, { marginTop: height * 0.1, marginBottom: height * 0.05 }]}>
@@ -36,6 +59,9 @@ const Login = (props) => {
             placeholder="Username or Email"
             placeholderTextColor="#000"
             selectionColor="#000"
+            value={form.name}
+            onChangeText={(text) => handleChange('email', text)}
+            
           />
         </View>
         <View style={styles.inputContainer}>
@@ -46,6 +72,8 @@ const Login = (props) => {
             placeholderTextColor="#000"
             secureTextEntry={secureTextEntry}
             selectionColor="#000"
+            value={form.name}
+            onChangeText={(text) => handleChange('password', text)}
           />
           <TouchableOpacity onPress={() => setSecureTextEntry(!secureTextEntry)}>
             <AntDesign name={secureTextEntry ? "eyeo" : "eye"} size={24} color="black" style={styles.eyeIcon} />
@@ -55,7 +83,9 @@ const Login = (props) => {
       <TouchableOpacity activeOpacity={0.7} style={styles.forgotContainer} onPress={() => { props.navigation.navigate('auth/ForgotPassword') }}>
         <Text style={styles.forgot}>Forgot Password?</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={[styles.loginButton, { marginTop: height * 0.03 }]} activeOpacity={0.7}>
+      <TouchableOpacity style={[styles.loginButton, 
+        { marginTop: height * 0.03 }]} activeOpacity={0.7}
+        onPress={handleLogin}>
         <Text style={styles.loginButtonText}>Login</Text>
       </TouchableOpacity>
       <ContinueWith 

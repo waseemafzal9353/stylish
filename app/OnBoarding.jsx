@@ -6,6 +6,7 @@ import Paginators from '../components/OnBoarding/Paginators';
 import NextButton from '../components/OnBoarding/NextButton';
 import Previous from '../components/OnBoarding/Previous';
 import TopHeader from '../components/OnBoarding/TopHeader';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const OnBoarding = () => {
   const dataLength = onBoardingData.length
@@ -23,6 +24,12 @@ const OnBoarding = () => {
         slidesRef.current.scrollToIndex({
           index: currentIndex + 1
         })
+      }else{
+        try {
+          await AsyncStorage.setItem('@viewedOnBoarding', 'true')
+        } catch (error) {
+          console.log(error)
+        }
       }
     }
 

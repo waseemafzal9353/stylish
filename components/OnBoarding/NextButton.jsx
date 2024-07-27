@@ -6,7 +6,7 @@ const NextButton = ({ scrollTo, currentIndex, dataLength }) => {
   const navigation = useNavigation()
   return (
     <TouchableOpacity
-      onPress={currentIndex < dataLength - 1 ? scrollTo : () => {navigation.navigate('auth/Login')}}
+      onPress={currentIndex < dataLength - 1 ? scrollTo : () => {navigation.navigate('GetStarted')}}
       style={styles.buttonContainer}
     >
       <Text style={styles.button}>
