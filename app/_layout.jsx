@@ -4,11 +4,6 @@ import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import Splash from "../components/SplashScreen";
 import { ActivityIndicator, View } from "react-native";
-import Login from "./(auth)/login";
-import Signup from "./(auth)/signup";
-import ForgotPassword from "./(auth)/forgotPassword";
-import TabLayout from "./(tabs)/_layout";
-import GetStarted from "./getStarted";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Provider } from "react-redux";
 import store from '../redux/store'
@@ -67,7 +62,7 @@ export default function RootLayout() {
         <Stack.Screen name="index" options={{headerShown: false}}/>
         <Stack.Screen name="(auth)" options={{headerShown: false}}/>
         <Stack.Screen name="getStarted"  options={{headerShown: false}}/>
-        <Stack.Screen name="(tabs)" options={{headerShown: false}}/>
+        <Stack.Screen name="(drawer)" options={{headerShown: false}}/>
       </Stack>
       {/* {loading ? <Loading /> : viewedOnBoarding ? <Login /> : <OnBoarding />} */}
       <Toast config={ToastConfig} ref={(ref) => Toast.setRef(ref)}/>

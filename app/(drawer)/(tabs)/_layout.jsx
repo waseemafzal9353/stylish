@@ -1,28 +1,24 @@
 import { Feather } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 import React from "react";
-import { Colors } from "../../constants/Colors";
+import { Colors } from "../../../constants/Colors";
 import { StyleSheet, View } from "react-native";
-
-export default function TabLayout({tabBarVisible}) {
+export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        headerShown: false,
         tabBarStyle: {
           borderTopWidth: 1,
           height: 80,
           backgroundColor: "#F5F5F5",
-          // paddingHorizontal: 60,
           paddingVertical: 10,
           paddingBottom: 20,
         },
         tabBarLabelStyle: {
-          // fontFamily:
           fontSize: 14,
         },
         tabBarShowLabel: true,
-        tabBarActiveTintColor: Colors.light.icon,
+        tabBarActiveTintColor: Colors.light.tint,
         tabBarInactiveTintColor: "black",
       }}
     >
@@ -100,7 +96,7 @@ const styles = StyleSheet.create({
     marginBottom: 35,
   },
   activeTab: {
-    backgroundColor: Colors.light.icon,
+    backgroundColor: Colors.light.tint,
     color: "white",
   },
 });

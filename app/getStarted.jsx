@@ -35,7 +35,7 @@ const GetStarted = (props) => {
             style={[styles.button, { height: height * 0.08 }]}
             activeOpacity={0.8}
             onPress={() => {
-             router.push('/home')
+             router.push('/(drawer)/(tabs)/home')
             }}
           >
             <Text style={styles.btnText}>Get Started</Text>
