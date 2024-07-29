@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, useWindowDimensions } from "react-native";
 import React from "react";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { router } from "expo-router";
 
 const TopHeader = ({ currentIndex, dataLength }) => {
   const { height, width } = useWindowDimensions();
@@ -14,7 +15,7 @@ const TopHeader = ({ currentIndex, dataLength }) => {
       </View>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate("auth/Login");
+          router.push('/login')
         }}
       >
         <Text style={styles.currentIndex}>Skip</Text>

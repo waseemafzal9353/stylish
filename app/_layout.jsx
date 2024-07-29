@@ -4,19 +4,17 @@ import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import Splash from "../components/SplashScreen";
 import { ActivityIndicator, View } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
-import OnBoarding from "./OnBoarding";
-import Login from "./auth/Login";
-import Signup from "./auth/Signup";
-import ForgotPassword from "./auth/ForgotPassword";
+import Login from "./(auth)/login";
+import Signup from "./(auth)/signup";
+import ForgotPassword from "./(auth)/forgotPassword";
 import TabLayout from "./(tabs)/_layout";
-import GetStarted from "./GetStarted";
+import GetStarted from "./getStarted";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Provider } from "react-redux";
 import store from '../redux/store'
 import Toast from "react-native-toast-message";
 import ToastConfig from '../components/ToastConfig'
-const Stack = createStackNavigator();
+import { Stack } from "expo-router";
 SplashScreen.preventAutoHideAsync();
 
 const Loading = () => {
@@ -65,18 +63,13 @@ export default function RootLayout() {
   // useEffect(() =>{checkOnBoarding}, [])
   return (
     <Provider store={store}>
-      <Stack.Navigator
-        initialRouteName="OnBoarding"
-        screenOptions={{ headerShown: false }}
-      >
-        <Stack.Screen name="OnBoarding" component={OnBoarding} />
-        <Stack.Screen name="auth/Login" component={Login} />
-        <Stack.Screen name="auth/Signup" component={Signup} />
-        <Stack.Screen name="auth/ForgotPassword" component={ForgotPassword} />
-        <Stack.Screen name="GetStarted" component={GetStarted} />
-        <Stack.Screen name="(tabs)" component={TabLayout} />
-      </Stack.Navigator>
-      {loading ? <Loading /> : viewedOnBoarding ? <Login /> : <OnBoarding />}
+      <Stack>
+        <Stack.Screen name="index" options={{headerShown: false}}/>
+        <Stack.Screen name="(auth)" options={{headerShown: false}}/>
+        <Stack.Screen name="getStarted"  options={{headerShown: false}}/>
+        <Stack.Screen name="(tabs)" options={{headerShown: false}}/>
+      </Stack>
+      {/* {loading ? <Loading /> : viewedOnBoarding ? <Login /> : <OnBoarding />} */}
       <Toast config={ToastConfig} ref={(ref) => Toast.setRef(ref)}/>
     </Provider>
   );

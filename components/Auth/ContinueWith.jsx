@@ -118,8 +118,9 @@ import {
     useWindowDimensions,
   } from "react-native";
   import React from "react";
+import { router } from "expo-router";
   
-  const ContinueWith = ({ navigation, accountLine, route, authType }) => {
+  const ContinueWith = ({ accountLine, route, authType }) => {
     const { width, height } = useWindowDimensions();
     return (
       <View style={[styles.bottomContainer, { gap: height * 0.03 }]}>
@@ -155,7 +156,7 @@ import {
           <TouchableOpacity
             style={{ paddingHorizontal: width * 0.02 }}
             onPress={() => {
-              navigation.navigate(route);
+              router.push(route);
             }}
           >
             <Text style={styles.signupLink}>

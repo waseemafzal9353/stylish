@@ -6,18 +6,45 @@ import {
   TextInput,
   useWindowDimensions,
   View,
+  TouchableOpacity
 } from "react-native";
 import React, { useState } from "react";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Fontisto from "@expo/vector-icons/Fontisto";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import ContinueWith from '../../components/Auth/ContinueWith'
+import ContinueWith from "../../components/Auth/ContinueWith";
+import Toast from "react-native-toast-message";
+import { useDispatch } from "react-redux";
+import { login } from "@/redux/authSlice";
+import { router } from "expo-router";
 
 const Signup = props => {
   const { width, height } = useWindowDimensions();
   const [secureTextEntryPassword, setSecureTextEntryPassword] = useState(true);
-  const [secureTextEntryConfirmPassword, setSecureTextEntryConfirmPassword] = useState(true);
+  const dispatch = useDispatch();
+  const [secureTextEntryConfirmPassword, setSecureTextEntryConfirmPassword] =
+    useState(true);
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const handleChange = (name, value) => {
+    setForm({ ...form, [name]: value });
+  };
+  const handleSignup = () => {
+    if (form.email === '' || form.password === '' || form.confirmPassword === '') {
+      Toast.show({
+        type: "error",
+        text1: "Validation Error",
+        text2: "All fields are required",
+      });
+      return;
+    }
+    dispatch(login({email: form.email, password: form.password}));
+    router.push('/getStarted')
+  };
   return (
     <SafeAreaView
       style={{
@@ -25,8 +52,7 @@ const Signup = props => {
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#F5F5F5",
-     alignItems: 'center'
-
+        alignItems: "center",
       }}
     >
       <ScrollView style={[styles.mainContainer, { marginTop: height * 0.1 }]}>
@@ -59,6 +85,8 @@ const Signup = props => {
               placeholder="Username or Email"
               placeholderTextColor="#676767"
               selectionColor="#676767"
+              value={form.email}
+              onChangeText={(text) => handleChange('email', text)}
             />
           </View>
           <View
@@ -79,17 +107,21 @@ const Signup = props => {
               placeholderTextColor="#676767"
               secureTextEntry={secureTextEntryPassword}
               selectionColor="#676767"
+              value={form.password}
+              onChangeText={(text) => handleChange('password', text)}
             />
-              <TouchableOpacity
-            onPress={() => setSecureTextEntryPassword(!secureTextEntryPassword)}
-          >
-            <AntDesign
-              name={secureTextEntryPassword ? "eyeo" : "eye"}
-              size={24}
-              color="black"
-              style={styles.eyeIcon}
-            />
-          </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() =>
+                setSecureTextEntryPassword(!secureTextEntryPassword)
+              }
+            >
+              <AntDesign
+                name={secureTextEntryPassword ? "eyeo" : "eye"}
+                size={24}
+                color="black"
+                style={styles.eyeIcon}
+              />
+            </TouchableOpacity>
           </View>
           <View
             style={[
@@ -109,39 +141,46 @@ const Signup = props => {
               placeholderTextColor="#676767"
               secureTextEntry={secureTextEntryConfirmPassword}
               selectionColor="#676767"
+              value={form.confirmPassword}
+              onChangeText={(text) =>
+                handleChange('confirmPassword', text)
+              }
             />
-              <TouchableOpacity
-            onPress={() => setSecureTextEntryConfirmPassword(!secureTextEntryConfirmPassword)}
-          >
-            <AntDesign
-              name={secureTextEntryConfirmPassword ? "eyeo" : "eye"}
-              size={24}
-              color="black"
-              style={styles.eyeIcon}
-            />
-          </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() =>
+                setSecureTextEntryConfirmPassword(
+                  !secureTextEntryConfirmPassword
+                )
+              }
+            >
+              <AntDesign
+                name={secureTextEntryConfirmPassword ? "eyeo" : "eye"}
+                size={24}
+                color="black"
+                style={styles.eyeIcon}
+              />
+            </TouchableOpacity>
           </View>
-          <View style={[styles.policy, {width: width*0.9}]}>
-              <Text style={styles.policyText}>
-              By clicking the{' '}
-              <Text style={styles.policyRegister}>
-              Register{' '}
-              </Text>
-              button,{' '}, you agree to the public offer
-              </Text>
-
-            </View>
-         
+          <View style={[styles.policy, { width: width * 0.9 }]}>
+            <Text style={styles.policyText}>
+              By clicking the{" "}
+              <Text style={styles.policyRegister}>Register </Text>
+              button, , you agree to the public offer
+            </Text>
+          </View>
         </View>
-        <TouchableOpacity style={[styles.createAccount, {marginHorizontal: width*0.05}]}>
-            <Text style={styles.createAccountText}>Create Account</Text>
-          </TouchableOpacity>
-          <ContinueWith style={{justifyContent: 'center', alignItems: 'center'}}
-        navigation={props.navigation}
-        accountLine="I Already Have An Account"
-        route="auth/Login"
-        authType='Login'
-      />
+        <TouchableOpacity
+          style={[styles.createAccount, { marginHorizontal: width * 0.05 }]}
+          onPress={handleSignup}
+        >
+          <Text style={styles.createAccountText}>Create Account</Text>
+        </TouchableOpacity>
+        <ContinueWith
+          style={{ justifyContent: "center", alignItems: "center" }}
+          accountLine="I Already Have An Account"
+          route="/login"
+          authType="Login"
+        />
       </ScrollView>
     </SafeAreaView>
   );
@@ -191,24 +230,23 @@ const styles = StyleSheet.create({
     // backgroundColor: "transparent",
   },
   policy: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    textAlign: 'center',
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    textAlign: "center",
     paddingHorizontal: 10,
     lineHeight: 24,
-
   },
   policyText: {
-    fontFamily: 'Montserrat-SB',
+    fontFamily: "Montserrat-SB",
     fontSize: 12,
     marginTop: -20,
     letterSpacing: 0.7,
-    color: '#676767'
+    color: "#676767",
   },
   policyRegister: {
-    fontWeight: 'bold',
-    color: '#FF4B26'
+    fontWeight: "bold",
+    color: "#FF4B26",
   },
   createAccount: {
     width: "90%",
@@ -217,14 +255,13 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: '5%'
+    marginBottom: "5%",
   },
   createAccountText: {
     color: "#FFFFFF",
     fontFamily: "Montserrat-SB",
     fontSize: 20,
     letterSpacing: 1,
-    lineHeight : 35,
-
+    lineHeight: 35,
   },
 });

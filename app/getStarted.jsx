@@ -8,12 +8,13 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useSelector } from "react-redux";
+import { router } from "expo-router";
 
 const image = require("../assets/images/getStarted.jpg");
 const GetStarted = (props) => {
   const { width, height } = useWindowDimensions();
-  const user = useSelector(state => state.user);
-  if(user === null) {
+  const user = useSelector(state => state.auth.user);
+  if(user === null || user === undefined) {
     console.log("no user")
   }
   return (
@@ -34,7 +35,7 @@ const GetStarted = (props) => {
             style={[styles.button, { height: height * 0.08 }]}
             activeOpacity={0.8}
             onPress={() => {
-              props.navigation.navigate("(tabs)");
+             router.push('/home')
             }}
           >
             <Text style={styles.btnText}>Get Started</Text>

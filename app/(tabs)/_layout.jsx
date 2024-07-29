@@ -4,10 +4,11 @@ import React from "react";
 import { Colors } from "../../constants/Colors";
 import { StyleSheet, View } from "react-native";
 
-export default function TabLayout() {
+export default function TabLayout({tabBarVisible}) {
   return (
     <Tabs
       screenOptions={{
+        headerShown: false,
         tabBarStyle: {
           borderTopWidth: 1,
           height: 80,

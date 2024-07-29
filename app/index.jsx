@@ -8,7 +8,7 @@ import Previous from '../components/OnBoarding/Previous';
 import TopHeader from '../components/OnBoarding/TopHeader';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const OnBoarding = () => {
+const App = () => {
   const dataLength = onBoardingData.length
   const {width} = useWindowDimensions()
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -71,7 +71,7 @@ const OnBoarding = () => {
     );
 };
 
-export default OnBoarding;
+export default App;
 
 const styles = StyleSheet.create({
     container: {

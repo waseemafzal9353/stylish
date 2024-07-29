@@ -15,14 +15,16 @@ import ContinueWith from "@/components/Auth/ContinueWith";
 import { useDispatch } from "react-redux";
 import {login} from '../../redux/authSlice'
 import Toast from "react-native-toast-message";
+import { router } from "expo-router";
 const Login = (props) => {
   const { width, height } = useWindowDimensions();
+  const dynamicFontSize = width * 0.07;
+
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [form, setForm] = useState({
     email: '',
     password: ''
   });
-  const dynamicFontSize = width * 0.07;
   const dispatch = useDispatch();
 
   const handleChange = (name, value) => {
@@ -38,7 +40,7 @@ const Login = (props) => {
       return
     }
     dispatch(login({email: form.email, password: form.password}))
-    props.navigation.navigate('GetStarted')
+    router.push('/getStarted')
   }
   
   return (
@@ -80,7 +82,7 @@ const Login = (props) => {
           </TouchableOpacity>
         </View>
       </View>
-      <TouchableOpacity activeOpacity={0.7} style={styles.forgotContainer} onPress={() => { props.navigation.navigate('auth/ForgotPassword') }}>
+      <TouchableOpacity activeOpacity={0.7} style={styles.forgotContainer} onPress={() => { router.push('/forgotPassword') }}>
         <Text style={styles.forgot}>Forgot Password?</Text>
       </TouchableOpacity>
       <TouchableOpacity style={[styles.loginButton, 
@@ -89,9 +91,8 @@ const Login = (props) => {
         <Text style={styles.loginButtonText}>Login</Text>
       </TouchableOpacity>
       <ContinueWith 
-        navigation={props.navigation}
         accountLine="Create An Account"
-        route="auth/Signup"
+        route="/signup"
         authType="Sign Up"
       />
     </SafeAreaView>

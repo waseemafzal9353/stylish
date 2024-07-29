@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import React from "react";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { router } from "expo-router";
 
 const ForgotPassword = (props) => {
   const { width, height } = useWindowDimensions();
@@ -56,6 +57,7 @@ const ForgotPassword = (props) => {
       <TouchableOpacity
         style={[styles.loginButton, { marginTop: height * 0.03 }]}
         activeOpacity={0.7}
+        onPress={router.push('/getStarted')}
       >
         <Text style={styles.loginButtonText}>Submit</Text>
       </TouchableOpacity>
@@ -68,7 +70,7 @@ const ForgotPassword = (props) => {
           },
         ]}
         onPress={() => {
-          props.navigation.navigate("auth/Login");
+          router.push("/login");
         }}
         activeOpacity={0.7}
       >
