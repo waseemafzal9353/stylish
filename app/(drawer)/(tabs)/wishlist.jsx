@@ -1,14 +1,22 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { View, Text, StyleSheet, ScrollView, SafeAreaView } from "react-native";
+import SearchCard from "../../../components/TabsComponents/SearchCard";
 
-const wishlist = () => {
+export default function WishListScreen() {
   return (
-    <View>
-      <Text>wishlist</Text>
-    </View>
-  )
+    <SafeAreaView
+      style={{ justifyContent: "center", alignItems: "center", flex: 1 }}
+    >
+      <ScrollView>
+        <SearchCard/>
+      </ScrollView>
+    </SafeAreaView>
+  );
 }
 
-export default wishlist
-
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});

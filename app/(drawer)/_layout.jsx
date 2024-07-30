@@ -1,17 +1,25 @@
 import React from "react";
 import { Drawer } from "expo-router/drawer";
-import { Feather } from "@expo/vector-icons";
 import { Colors } from "../../constants/Colors";
-import { Image, StyleSheet, TouchableOpacity, useWindowDimensions, View } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  useWindowDimensions,
+  View,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 const CustomHeader = () => {
   const navigation = useNavigation();
-const {width, height} = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
   return (
-    <View style={[styles.header, {paddingHorizontal: width*0.03}]}>
-      <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+    <View style={[styles.header, { paddingHorizontal: width * 0.03 }]}>
+      <TouchableOpacity
+        onPress={() => navigation.toggleDrawer()}
+        style={styles.barContainer}
+      >
         <Image
-          source={require("../../assets/icons/bars.png")} // Adjust the path to your image
+          source={require("../../assets/icons/bars.png")}
           style={styles.icon}
         />
       </TouchableOpacity>
@@ -66,16 +74,22 @@ export default DrawerLayout;
 const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
-    justifyContent: 'space-between',
-    width: '100%',
-    textAlign: 'center',
-    alignItems: 'center'
+    justifyContent: "space-between",
+    width: "100%",
+    textAlign: "center",
+    alignItems: "center",
+  },
+  barContainer: {
+    backgroundColor: "rgba(50, 50, 50, 0.08)",
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    justifyContent: "center",
+    alignItems: "center",
   },
   icon: {
-    width: 18,
-    height: 12,
+    width: 24,
+    height: 16,
     resizeMode: "contain",
-    marginLeft: 20,
-    color: "#323232",
   },
 });
