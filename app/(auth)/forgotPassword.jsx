@@ -7,13 +7,36 @@ import {
   TouchableOpacity,
   useWindowDimensions,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { router } from "expo-router";
+import {forgotPassword} from '../../redux/authSlice'
+import { useDispatch } from "react-redux";
+import Toast from "react-native-toast-message";
 
 const ForgotPassword = (props) => {
   const { width, height } = useWindowDimensions();
   const dynamicFontSize = width * 0.07;
+  const [email, setEmail] = useState('');
+  const dispatch = useDispatch();
+
+  const handleForgotPassword = () => {
+    if (email === '') {
+      Toast.show({
+        type: 'error',
+        text1: 'Validation Error',
+        text2: 'Email cannot be empty.'
+      });
+      return;
+    }
+    dispatch(forgotPassword({ email }));
+    Toast.show({
+      type: 'info',
+      text1: 'Email Sent',
+      text2: 'Reset password email has been sent to your email'
+    });
+    router.push('/getStarted');
+  };
   return (
     <SafeAreaView
       style={{ flex: 1, justifyContent: "flex-start", alignItems: "center" }}
@@ -44,6 +67,8 @@ const ForgotPassword = (props) => {
             placeholder="Username or Email"
             placeholderTextColor="#000"
             selectionColor="#000"
+            value={email}
+            onChangeText={(text) => setEmail(text)}
           />
         </View>
       </View>
@@ -57,7 +82,7 @@ const ForgotPassword = (props) => {
       <TouchableOpacity
         style={[styles.loginButton, { marginTop: height * 0.03 }]}
         activeOpacity={0.7}
-        onPress={router.push('/getStarted')}
+        onPress={handleForgotPassword}
       >
         <Text style={styles.loginButtonText}>Submit</Text>
       </TouchableOpacity>

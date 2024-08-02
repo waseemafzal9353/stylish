@@ -1,24 +1,29 @@
 import { View, Text, StyleSheet, ScrollView, SafeAreaView } from "react-native";
-import SearchCard from "../../../components/TabsComponents/SearchCard";
-import AllFeatured from "../../../components/TabsComponents/AllFeatured";
+import SearchCard from "../../../components/TabsComponents/Home/SearchCard";
+import AllFeatured from "../../../components/TabsComponents/Home/AllFeatured";
+import TopCategories from "../../../components/TabsComponents/Home/topCategories/TopCategories";
+import SpecialOffers from "../../../components/TabsComponents/Home/SpecialOffers";
+import DealofTheDay from "../../../components/TabsComponents/Home/DealofTheDay";
 
 export default function HomeScreen() {
   return (
-    <SafeAreaView
-      style={{ justifyContent: "center", alignItems: "center", flex: 1 }}
-    >
-      <ScrollView>
-        <SearchCard/>
-        <AllFeatured/>
+    <SafeAreaView style={styles.safeAreaView}>
+      <ScrollView contentContainerStyle={styles.scrollViewContent}>
+        <SearchCard />
+        <AllFeatured />
+        <TopCategories />
+        <SpecialOffers/>
+        <DealofTheDay/>
       </ScrollView>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+  safeAreaView: {
+    flex: 1, 
   },
+  scrollViewContent: {
+    alignItems: "center", 
+    paddingVertical: 20, },
 });

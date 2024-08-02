@@ -29,6 +29,8 @@ export default AllFeatured;
 
 const styles = StyleSheet.create({
   mainContainer: {
+    flex: 1,
+    width: '90%',
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",

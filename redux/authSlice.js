@@ -5,7 +5,8 @@ const initialState = {
         email: '',
         password: ''
     },
-    isAuthenticated: false
+    isAuthenticated: false,
+    email: ''
 }
 
 const authSlice = createSlice({
@@ -18,9 +19,13 @@ const authSlice = createSlice({
                 email: action.payload.email,
                 password: action.payload.password
             }
+        },
+        forgotPassword: (state, action) =>{
+            console.log(action.payload, 'ppppppppppppppp')
+            state.email = action.payload.email
         }
     }
 });
 
-export const {login, logout} = authSlice.actions;
+export const {login, logout, forgotPassword} = authSlice.actions;
 export default authSlice.reducer

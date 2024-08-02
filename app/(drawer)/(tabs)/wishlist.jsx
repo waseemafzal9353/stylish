@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, ScrollView, SafeAreaView } from "react-native";
-import SearchCard from "../../../components/TabsComponents/SearchCard";
+import SearchCard from "../../../components/TabsComponents/Home/SearchCard";
 
 export default function WishListScreen() {
   return (

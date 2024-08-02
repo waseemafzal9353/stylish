@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useSelector } from "react-redux";
-import { router } from "expo-router";
+import { router, Link } from "expo-router";
 
 const image = require("../assets/images/getStarted.jpg");
 const GetStarted = (props) => {

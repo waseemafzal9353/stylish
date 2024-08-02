@@ -49,7 +49,7 @@ export default function RootLayout() {
 
   const checkOnBoarding = async () => {
     try {
-      const value = await AsyncStorjage.getItem('@viewedOnBoarding')
+      const value = await AsyncStorage.getItem('@viewedOnBoarding')
       if(value !== null) setViewedOnBoarding(true)
     } catch (error) {
       setLoading(false)
@@ -65,7 +65,7 @@ export default function RootLayout() {
         <Stack.Screen name="(drawer)" options={{headerShown: false}}/>
       </Stack>
       {/* {loading ? <Loading /> : viewedOnBoarding ? <Login /> : <OnBoarding />} */}
-      <Toast config={ToastConfig} ref={(ref) => Toast.setRef(ref)}/>
+      <Toast config={ToastConfig}/>
     </Provider>
   );
 }
