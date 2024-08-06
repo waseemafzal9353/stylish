@@ -1,0 +1,55 @@
+const topDeals = [
+    {
+      id: "1",
+      title: 'Women Printed Kurta',
+      description: 'Elegant printed kurta made with high-quality fabric.',
+      deal: "40% Off",
+      price: 1500,
+      actualPrice: 2499,
+      stars: 56890,
+      image: require("../assets/images/deals/DealDay/shoes2.jpg"),
+    },
+    {
+      id: "2",
+      title: 'Men Casual Shirt',
+      description: 'Stylish and comfortable casual shirt',
+      deal: "30% Off",
+      price: 1200,
+      actualPrice: 1700,
+      stars: 32145,
+      image: require("../assets/images/deals/DealDay/men.jpg"),
+    },
+    {
+      id: "3",
+      title: 'Smart Watch',
+      description: 'Feature-packed smartwatch with health tracking',
+      deal: "50% Off",
+      price: 3500,
+      actualPrice: 7000,
+      stars: 84500,
+      image: require("../assets/images/deals/DealDay/women-1.jpg"),
+    },
+    {
+      id: "4",
+      title: 'Wireless Earbuds',
+      description: 'High-quality wireless earbuds',
+      deal: "20% Off",
+      price: 2000,
+      actualPrice: 2500,
+      stars: 21000,
+      image: require("../assets/images/deals/DealDay/earbuds.jpg"),
+    },
+    {
+      id: "5",
+      title: 'Leather Handbag',
+      description: 'Premium leather handbag',
+      deal: "35% Off",
+      price: 4500,
+      actualPrice: 7000,
+      stars: 19000,
+      image: require("../assets/images/deals/DealDay/women-2.jpg"),
+    },
+  ];
+  
+  export default topDeals;
+  

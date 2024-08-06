@@ -4,6 +4,8 @@ import AllFeatured from "../../../components/TabsComponents/Home/AllFeatured";
 import TopCategories from "../../../components/TabsComponents/Home/topCategories/TopCategories";
 import SpecialOffers from "../../../components/TabsComponents/Home/SpecialOffers";
 import DealofTheDay from "../../../components/TabsComponents/Home/DealofTheDay";
+import Deals from "../../../components/TabsComponents/Home/Deals";
+import SpecialOfferCard from "../../../components/TabsComponents/Home/SpecialOfferCard";
 
 export default function HomeScreen() {
   return (
@@ -14,6 +16,8 @@ export default function HomeScreen() {
         <TopCategories />
         <SpecialOffers/>
         <DealofTheDay/>
+        <Deals/>
+        <SpecialOfferCard/>
       </ScrollView>
     </SafeAreaView>
   );
