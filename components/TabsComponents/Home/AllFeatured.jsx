@@ -3,10 +3,10 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Feather from "@expo/vector-icons/Feather";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-const AllFeatured = () => {
+const AllFeatured = ({headerText}) => {
   return (
     <View style={styles.mainContainer}>
-      <Text style={styles.headerText}>All Featured</Text>
+      <Text style={styles.headerText}>{headerText}</Text>
       <View style={styles.Ops}>
        <TouchableOpacity activeOpacity={0.7}>
        <View style={styles.Op}>

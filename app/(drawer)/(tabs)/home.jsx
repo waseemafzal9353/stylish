@@ -6,18 +6,28 @@ import SpecialOffers from "../../../components/TabsComponents/Home/SpecialOffers
 import DealofTheDay from "../../../components/TabsComponents/Home/DealofTheDay";
 import Deals from "../../../components/TabsComponents/Home/Deals";
 import SpecialOfferCard from "../../../components/TabsComponents/Home/SpecialOfferCard";
+import FlatHeels from "../../../components/TabsComponents/Home/FlatHeels";
+import TrendingProducts from "../../../components/TabsComponents/Home/TrendingProducts";
+import Trending from "../../../components/TabsComponents/Home/Trending";
+import Summer from "../../../components/TabsComponents/Home/Summer";
+import Sponsered from "../../../components/TabsComponents/Home/Sponsered";
 
 export default function HomeScreen() {
   return (
     <SafeAreaView style={styles.safeAreaView}>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
         <SearchCard />
-        <AllFeatured />
+        <AllFeatured headerText="All Featured"/>
         <TopCategories />
         <SpecialOffers/>
         <DealofTheDay/>
         <Deals/>
         <SpecialOfferCard/>
+        <FlatHeels/>
+        <TrendingProducts/>
+        <Trending/>
+        <Summer/>
+        <Sponsered/>
       </ScrollView>
     </SafeAreaView>
   );

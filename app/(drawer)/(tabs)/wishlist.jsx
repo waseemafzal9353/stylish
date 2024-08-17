@@ -1,22 +1,25 @@
 import { View, Text, StyleSheet, ScrollView, SafeAreaView } from "react-native";
 import SearchCard from "../../../components/TabsComponents/Home/SearchCard";
+import AllFeatured from "../../../components/TabsComponents/Home/AllFeatured";
 
 export default function WishListScreen() {
   return (
     <SafeAreaView
-      style={{ justifyContent: "center", alignItems: "center", flex: 1 }}
+    style={styles.safeAreaView}
     >
-      <ScrollView>
+      <ScrollView contentContainerStyle={styles.scrollViewContent}>
         <SearchCard/>
+        <AllFeatured headerText="52,082+ Items"/>
       </ScrollView>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+  safeAreaView: {
+    flex: 1, 
   },
+  scrollViewContent: {
+    alignItems: "center", 
+    paddingVertical: 20, },
 });
