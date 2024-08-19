@@ -63,42 +63,54 @@ const styles = StyleSheet.create({
     // gap: 10,
     marginVertical: 10,
     width: wp(42),
-    height: hp(25),
+    height: hp(28),
     borderRadius: 10,
     overflow: "hidden",
+      // Shadow for iOS
+  shadowColor: "#000",
+  shadowOffset: {
+    width: 2,
+    height: 2,
+  },
+  shadowOpacity: 1,
+  shadowRadius: 3.84,
+
+  // Shadow for Android
+  elevation: 5,
   },
   image: {
     width: "100%",
-    height: "50%",
+    height: "55%",
     resizeMode: "cover",
-    marginBottom: hp(0.5),
+    marginBottom: hp(0.7),
+    borderRadius: 10
   },
   title: {
     fontFamily: "Montserrat-M",
     fontSize: hp(1.5),
     lineHeight: hp(1.5),
-    paddingHorizontal: wp(1),
+    paddingHorizontal: wp(1.5),
   },
   description: {
     fontFamily: 'Montserrat-R',
     fontSize: hp(1.3),
-    paddingHorizontal: wp(1),
+    paddingHorizontal: wp(1.5),
   },
   price: {
     fontFamily: 'Montserrat-R',
     fontSize: hp(1.3),
-    paddingHorizontal: wp(1),
+    paddingHorizontal: wp(1.5),
   },
   ratingContainer: {
     flexDirection: "row",
     alignItems: "center",
     marginVertical: 10,
-    paddingHorizontal: wp(1),
+    paddingHorizontal: wp(1.5),
   },
   stars: {
     color: "#A4A9B3",
     fontFamily: "Montserrat-R",
     fontSize: 12,
-    paddingHorizontal: wp(1),
+    paddingHorizontal: wp(1.5),
   },
 });
